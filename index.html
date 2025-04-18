@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>长沙两日游攻略 - 精致美化版</title>
+    <style>
+        /* 基础样式优化  */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', '微软雅黑', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+        }
+
+        /* 卡片式容器设计  */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 标题动态效果  */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { opacity: 0.9; }
+            to { opacity: 1; }
+        }
+
+        /* 表格美化  */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        th {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        tr:hover td {
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        /* 列表美化  */
+        ul {
+            list-style: none;
+            padding: 1rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+        }
+
+        li {
+            padding: 1rem;
+            margin: 0.8rem 0;
+            background: linear-gradient(90deg, rgba(52, 152, 219, 0.1) 0%, transparent 100%);
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateX(10px);
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 按钮交互优化  */
+        .print-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        /* 响应式设计  */
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .section { margin: 1rem 0; }
+            h1 { font-size: 2rem; }
+            th, td { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 保持原有HTML结构不变 -->
+    <div class="section">
+        <h1>长沙两日游超详细攻略</h1>
+        
+        <div class="section">
+            <h2>📌 行程概览</h2>
+            <table>
+                <tr><th>时段</th><th>第一天</th><th>第二天</th></tr>
+                <tr><td>上午</td><td>岳麓山景区</td><td>湖南省博物馆</td></tr>
+                <tr><td>下午</td><td>橘子洲+坡子街</td><td>黄兴路步行街+太平街</td></tr>
+                <tr><td>晚上</td><td>杜甫江阁+酒吧</td><td>返程准备</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🧳 必备物品清单</h2>
+            <ul>
+                <li><strong>证件类：</strong>身份证</li>
+                <li><strong>防护类：</strong>防晒霜、墨镜、伞</li>
+                <li><strong>电子设备：</strong>充电宝、数据线</li>
+                <li><strong>药品类：</strong>防蚊喷雾、晕车药、肠胃药</li>
+                <li><strong>其他：</strong>舒适运动鞋、一次性洗漱用品、背包</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🚇 详细行程安排</h2>
+            <h3>第一天：岳麓山 → 橘子洲 → 坡子街 → 杜甫江阁</h3>
+            <table>
+                <tr><th>时间</th><th>活动</th><th>费用</th></tr>
+                <tr><td>06:00-07:00</td><td>抵达长沙站，酒店寄存行李</td><td>寄存免费</td></tr>
+                <tr><td>07:00-11:30</td><td>岳麓山（索道+滑道）</td><td>65元</td></tr>
+                <tr><td>12:00-13:00</td><td>湖南大学小吃街午餐</td><td>20元</td></tr>
+                <tr><td>14:00-16:00</td><td>橘子洲小火车环游</td><td>40元</td></tr>
+                <tr><td>17:00-18:00</td><td>坡子街美食打卡</td><td>40元</td></tr>
+                <tr><td>20:00-21:00</td><td>杜甫江阁夜景</td><td>11元</td></tr>
+                <tr><td>22:00-01:00</td><td>长沙公社酒吧体验</td><td>150元</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h3>第二天：博物馆 → 步行街 → 返程</h3>
+            <table>
+                <tr><th>时间</th><th>活动</th><th>费用</th></tr>
+                <tr><td>08:00-09:00</td><td>公交新村米粉早餐</td><td>15元</td></tr>
+                <tr><td>09:30-12:00</td><td>湖南省博物馆参观</td><td>免费</td></tr>
+                <tr><td>13:30-17:30</td><td>黄兴路+太平街深度游</td><td>80元</td></tr>
+                <tr><td>18:00-19:30</td><td>火车站周边晚餐</td><td>40元</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ 重要提示</h2>
+            <div class="tip">
+                <p>1. 博物馆需提前7天预约（湖南博物院公众号）<br>
+                2. 橘子洲小火车末班22:00，建议傍晚前返程<br>
+                3. 坡子街保管好随身物品，避免携带贵重首饰<br>
+                4. 酒吧消费建议提前联系客服预定位置</p>
+            </div>
+        </div>
+
+        <div class="print-btn" onclick="window.print()">打印攻略</div>
+    </div>
+</body>
+</html>
