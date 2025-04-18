@@ -2,148 +2,317 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>长沙两日游攻略 - 精致美化版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长沙两日游精致攻略 | 问小白</title>
     <style>
-        /* 基础样式优化  */
+        :root {
+            --primary: #6C5CE7;
+            --secondary: #00CEC9;
+            --accent: #FF7675;
+            --text: #2D3436;
+            --light: #F5F6FA;
+            --glass: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+            --spacing: 24px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', '微软雅黑', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 2rem;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #F5F7FA 0%, #E4E8F0 100%);
+            padding-bottom: 80px;
         }
 
-        /* 卡片式容器设计  */
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 800px;
-            transition: transform 0.3s ease;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
         }
 
-        .section:hover {
-            transform: translateY(-5px);
-        }
-
-        /* 标题动态效果  */
-        h1 {
+        header {
+            padding: 60px 0 40px;
             text-align: center;
-            color: #2c3e50;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
             position: relative;
-            display: inline-block;
-            background: linear-gradient(45deg, #3498db, #8e44ad);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: titleGlow 2s ease-in-out infinite alternate;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
         }
 
-        @keyframes titleGlow {
-            from { opacity: 0.9; }
-            to { opacity: 1; }
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* 表格美化  */
+        .divider {
+            height: 4px;
+            width: 80px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 30px auto;
+            border-radius: 2px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: var(--spacing);
+            margin-bottom: var(--spacing);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition);
+            animation: fadeIn 0.6s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .card-content {
+            line-height: 1.7;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-time {
+            position: absolute;
+            left: -40px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .timeline-content {
+            padding-left: 20px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .timeline-desc {
+            color: var(--text);
+            opacity: 0.9;
+        }
+
+        .price {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .highlight {
+            background: rgba(255, 118, 117, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.5rem 0;
-            background: rgba(255,255,255,0.8);
-            border-radius: 15px;
+            margin: 20px 0;
+            background: var(--glass);
+            border-radius: var(--border-radius);
             overflow: hidden;
         }
 
         th, td {
-            padding: 1.2rem;
+            padding: 12px 16px;
             text-align: left;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         th {
-            background: linear-gradient(135deg, #3498db, #8e44ad);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: white;
             font-weight: 500;
-            letter-spacing: 1px;
         }
 
-        tr:hover td {
-            background: rgba(52, 152, 219, 0.05);
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        /* 列表美化  */
-        ul {
-            list-style: none;
-            padding: 1rem;
-            background: rgba(255,255,255,0.9);
-            border-radius: 10px;
-        }
-
-        li {
-            padding: 1rem;
-            margin: 0.8rem 0;
-            background: linear-gradient(90deg, rgba(52, 152, 219, 0.1) 0%, transparent 100%);
-            border-left: 4px solid #3498db;
-            transition: all 0.3s ease;
-        }
-
-        li:hover {
-            transform: translateX(10px);
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-        }
-
-        /* 按钮交互优化  */
-        .print-btn {
+        .tag {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #3498db, #8e44ad);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
         }
 
-        .print-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        .tag-primary {
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary);
         }
 
-        /* 响应式设计  */
+        .tag-secondary {
+            background: rgba(0, 206, 201, 0.1);
+            color: var(--secondary);
+        }
+
+        .tag-accent {
+            background: rgba(255, 118, 117, 0.1);
+            color: var(--accent);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
-            body { padding: 1rem; }
-            .section { margin: 1rem 0; }
-            h1 { font-size: 2rem; }
-            th, td { padding: 1rem; }
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 16px;
+            }
+            
+            th, td {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            :root {
+                --spacing: 16px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+            
+            .timeline-time {
+                left: -30px;
+                width: 24px;
+                height: 24px;
+                font-size: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 保持原有HTML结构不变 -->
-    <div class="section">
-        <h1>长沙两日游超详细攻略</h1>
-        
-        <div class="section">
-            <h2>📌 行程概览</h2>
-            <table>
-                <tr><th>时段</th><th>第一天</th><th>第二天</th></tr>
-                <tr><td>上午</td><td>岳麓山景区</td><td>湖南省博物馆</td></tr>
-                <tr><td>下午</td><td>橘子洲+坡子街</td><td>黄兴路步行街+太平街</td></tr>
-                <tr><td>晚上</td><td>杜甫江阁+酒吧</td><td>返程准备</td></tr>
-            </table>
-        </div>
+    <div class="container">
+        <header>
+            <h1>长沙两日游精致攻略</h1>
+            <div class="divider"></div>
+        </header>
 
-        <div class="section">
+
+        <div class="card">
             <h2>🧳 必备物品清单</h2>
             <ul>
                 <li><strong>证件类：</strong>身份证</li>
@@ -154,43 +323,255 @@
             </ul>
         </div>
 
-        <div class="section">
-            <h2>🚇 详细行程安排</h2>
-            <h3>第一天：岳麓山 → 橘子洲 → 坡子街 → 杜甫江阁</h3>
-            <table>
-                <tr><th>时间</th><th>活动</th><th>费用</th></tr>
-                <tr><td>06:00-07:00</td><td>抵达长沙站，酒店寄存行李</td><td>寄存免费</td></tr>
-                <tr><td>07:00-11:30</td><td>岳麓山（索道+滑道）</td><td>65元</td></tr>
-                <tr><td>12:00-13:00</td><td>湖南大学小吃街午餐</td><td>20元</td></tr>
-                <tr><td>14:00-16:00</td><td>橘子洲小火车环游</td><td>40元</td></tr>
-                <tr><td>17:00-18:00</td><td>坡子街美食打卡</td><td>40元</td></tr>
-                <tr><td>20:00-21:00</td><td>杜甫江阁夜景</td><td>11元</td></tr>
-                <tr><td>22:00-01:00</td><td>长沙公社酒吧体验</td><td>150元</td></tr>
-            </table>
-        </div>
-
-        <div class="section">
-            <h3>第二天：博物馆 → 步行街 → 返程</h3>
-            <table>
-                <tr><th>时间</th><th>活动</th><th>费用</th></tr>
-                <tr><td>08:00-09:00</td><td>公交新村米粉早餐</td><td>15元</td></tr>
-                <tr><td>09:30-12:00</td><td>湖南省博物馆参观</td><td>免费</td></tr>
-                <tr><td>13:30-17:30</td><td>黄兴路+太平街深度游</td><td>80元</td></tr>
-                <tr><td>18:00-19:30</td><td>火车站周边晚餐</td><td>40元</td></tr>
-            </table>
-        </div>
-
-        <div class="section">
-            <h2>⚠️ 重要提示</h2>
-            <div class="tip">
-                <p>1. 博物馆需提前7天预约（湖南博物院公众号）<br>
-                2. 橘子洲小火车末班22:00，建议傍晚前返程<br>
-                3. 坡子街保管好随身物品，避免携带贵重首饰<br>
-                4. 酒吧消费建议提前联系客服预定位置</p>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🚀</div>
+                <h2 class="card-title">两天行程总览</h2>
+            </div>
+            <div class="card-content">
+                <p><strong>第一天：</strong>岳麓山 → 橘子洲 → 坡子街 → IFS国金中心 → 杜甫江阁 → 长沙公社酒吧</p>
+                <p><strong>第二天：</strong>湖南省博物馆 → 黄兴路步行街 → 太平街深度游</p>
+                <div style="margin-top: 16px;">
+                    <span class="tag tag-primary">🏨 住宿推荐</span>
+                    <span class="tag tag-secondary">🚇 地铁2号线</span>
+                    <span class="tag tag-accent">💰 人均200元/天</span>
+                </div>
             </div>
         </div>
 
-        <div class="print-btn" onclick="window.print()">打印攻略</div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🌞</div>
+                <h2 class="card-title">第一天详细行程</h2>
+            </div>
+            <div class="card-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">06:00</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">抵达长沙火车站</h3>
+                            <p class="timeline-desc">步行至酒店寄存行李（推荐璟宸酒店，步行至地铁口5分钟，<span class="price">人均150元/晚</span>）</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">07:00</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">岳麓山游览</h3>
+                            <p class="timeline-desc">地铁2号线至岳麓山东门（溁湾镇站3号口），<span class="highlight">索道上山30元/人</span> → <span class="highlight">滑道下山35元/人</span>，山顶观景台俯瞰湘江全景</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">12:00</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">湖南大学小吃街</h3>
+                            <p class="timeline-desc">天马牛肉饼<span class="price">6元/个</span>、老头子糖油粑粑<span class="price">5元/份</span></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">14:00</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">橘子洲游览</h3>
+                            <p class="timeline-desc">小火车环洲<span class="price">40元/人</span>，打卡青年毛泽东雕塑、湘江步道</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">16:30</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">坡子街美食</h3>
+                            <p class="timeline-desc">黑色经典臭豆腐<span class="price">10元</span>、茶颜悦色幽兰拿铁<span class="price">18元</span></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">18:30</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">IFS国金中心</h3>
+                            <p class="timeline-desc">7楼KAWS雕塑拍照，晚餐推荐炊烟小炒黄牛肉<span class="price">人均60元</span></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">20:30</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">杜甫江阁夜景</h3>
+                            <p class="timeline-desc">亮灯时间19:30-22:30，门票<span class="price">11元</span></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">22:00</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">长沙公社酒吧</h3>
+                            <p class="timeline-desc">解放西路店，需提前2天订位，<span class="highlight">低消300元/卡座</span>，午夜斗舞与KPOP随舞</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🌙</div>
+                <h2 class="card-title">第二天详细行程</h2>
+            </div>
+            <div class="card-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">08:00</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">早餐</h3>
+                            <p class="timeline-desc">公交新村米粉店牛肉粉<span class="price">15元/碗</span></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">09:30</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">湖南省博物馆</h3>
+                            <p class="timeline-desc">重点参观马王堆汉墓（辛追夫人、素纱襌衣）、T型帛画展区，租讲解器<span class="price">20元/台</span></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">12:30</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">黄兴路步行街午餐</h3>
+                            <p class="timeline-desc">笨萝卜浏阳菜馆醋蒸鸡<span class="price">38元</span>，人均50元</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">14:30</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">太平街深度游</h3>
+                            <p class="timeline-desc">
+                                1. 贾谊故居（免费，凭身份证登记）<br>
+                                2. 小吃必吃：邵福记梅菜扣肉饼<span class="price">8元</span>、胡记炸炸炸<span class="price">人均25元</span><br>
+                                3. 文创打卡：前行·太平里明信片<span class="price">10元/套</span>、孚嘉巷复古街拍
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">18:00</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">返程</h3>
+                            <p class="timeline-desc">地铁2号线至长沙火车站（15分钟），晚餐推荐阿越传奇剁椒鱼头<span class="price">68元</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">📝</div>
+                <h2 class="card-title">关键预约清单</h2>
+            </div>
+            <div class="card-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>景点</th>
+                            <th>预约方式</th>
+                            <th>预约时间</th>
+                            <th>费用</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>岳麓山</td>
+                            <td>"岳麓山橘子洲旅游区"公众号</td>
+                            <td>提前3天</td>
+                            <td>免费</td>
+                            <td>索道/滑道现场购票</td>
+                        </tr>
+                        <tr>
+                            <td>橘子洲</td>
+                            <td>同上</td>
+                            <td>提前3天</td>
+                            <td>免费</td>
+                            <td>小火车40元免预约</td>
+                        </tr>
+                        <tr>
+                            <td>湖南省博物馆</td>
+                            <td>"湖南博物院"公众号</td>
+                            <td>提前7天</td>
+                            <td>免费</td>
+                            <td>周一闭馆</td>
+                        </tr>
+                        <tr>
+                            <td>杜甫江阁</td>
+                            <td>"杜甫江阁岳麓文旅"公众号</td>
+                            <td>当天</td>
+                            <td>11元</td>
+                            <td>亮灯时段最佳</td>
+                        </tr>
+                        <tr>
+                            <td>长沙公社酒吧</td>
+                            <td>联系客服微信</td>
+                            <td>提前2天</td>
+                            <td>低消300元</td>
+                            <td>23:00后氛围最佳</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">⚠️</div>
+                <h2 class="card-title">注意事项与避坑指南</h2>
+            </div>
+            <div class="card-content">
+                <h3 style="margin-bottom: 12px; color: var(--primary);">交通提示</h3>
+                <p style="margin-bottom: 16px;">下载"长沙地铁"APP绑定支付宝/微信，2号线贯穿主要景点（火车站→五一广场仅15分钟）。夜间酒吧返程建议网约车（解放西至火车站约15元）。</p>
+                
+                <h3 style="margin-bottom: 12px; color: var(--primary);">避坑指南</h3>
+                <ul style="margin-left: 20px; margin-bottom: 16px;">
+                    <li style="margin-bottom: 8px;">太平街"甜老虎辣椒酱"可网购同款，现场溢价高</li>
+                    <li style="margin-bottom: 8px;">茶颜悦色可小程序提前点单，省博物馆早9点人最少</li>
+                    <li style="margin-bottom: 8px;">坡子街/解放西人流密集，背包前置，避免携带贵重物品</li>
+                </ul>
+                
+                <h3 style="margin-bottom: 12px; color: var(--primary);">费用参考（人均）</h3>
+                <p style="margin-bottom: 8px;"><strong>门票/娱乐：</strong>岳麓山65元 + 橘子洲40元 + 杜甫江阁11元 + 酒吧150元 = <span class="price">266元</span></p>
+                <p style="margin-bottom: 8px;"><strong>餐饮：</strong>早中晚三餐+小吃 ≈ <span class="price">200元</span></p>
+                <p style="margin-bottom: 8px;"><strong>交通：</strong>地铁+打车 ≈ <span class="price">30元</span></p>
+                <p><strong>总计：</strong>约 <span class="price">700元</span>（含住宿）</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🔀</div>
+                <h2 class="card-title">备选方案</h2>
+            </div>
+            <div class="card-content">
+                <p>若太平街行程结束较早，可增加：</p>
+                <ul style="margin-left: 20px; margin-top: 12px;">
+                    <li style="margin-bottom: 8px;"><strong>潮宗街文艺拍照</strong>（地铁1号线五一广场站，免费）</li>
+                    <li><strong>谢子龙影像馆</strong>（需购票80元，网红保安拍照）</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
